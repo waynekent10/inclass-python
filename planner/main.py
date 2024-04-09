@@ -1,56 +1,42 @@
-import datetime  # This helps work with dates and times.
+import datetime
 
-#
+class City: 
+    def __init__(self):
+        self.buildings = []
+        
+    def add_building(self, building):
+        self.buildings.append(building)
+            
 class Building:
     def __init__(self, address, stories):
-        # Setting up the requirements for the buildings
-        self.address = address  # The address where the building is located.
-        self.stories = stories 
-        self.designer = 'Bruce Bruce' 
-        self.date_constructed = None
-        self.owner = "Bruce "
+        self.address = address
+        self.stories = stories
+        self.designer = "Bruce"
+        self.date_constructed = ''
+        self.owner = ''
 
     def construct(self):
-        # This method tells me when the building was built.
         self.date_constructed = datetime.datetime.now()
 
     def purchase(self, buyer):
-        # This method helps me know who bought the building.
         self.owner = buyer
-class City:
-    def __init__(self, name, mayor, year_established):
-        self.name = name
-        self.mayor = "Mayor Clark"
-        self.year_established = year_established
-        self.buildings = []
+# Create 5 building instances
+buildings = [
+    Building("100 Punk Street", 5),
+    Building("200 Jabroni Avenue", 8),
+    Building("300 Stone Cold Street", 10),
+    Building("400 Viper Avenue", 15),
+    Building("500 Pizza Lane", 12)
+]
 
-    def add_building(self, building):
-        self.buildings.append(building)
-# Create buildings
-buildings = []
+agent = "Hollywood"
 
-megalopolis = City("Megalopolis", "Mayor Smith", 2024)
+megalopolis = City()
 
-
-# Create the buildings and give them addresses and stories.
-buildings.append(Building("100 Main Street", 5))
-buildings.append(Building("200 Broad Avenue", 8))
-buildings.append(Building("300 Elm Street", 10))
-buildings.append(Building("400 Pine Avenue", 15))
-buildings.append(Building("500 Oak Lane", 20))
-
-# Potential buyers
-buyer_names = ["Daun", "Abby", "Maria", "Frank"]
-
-# For each building, 
-for building, buyer in zip(buildings, buyer_names):
-    building.purchase(buyer)  # Someone buys the building.
-    building.construct()  # We note down when it's built.
-
-# Now, let's print out the details of each building.
 for building in buildings:
-    print("Address:", building.address)  # Print the building's address.
-    print("Owner:", building.owner)  # Print the name of the owner.
-    print("Stories:", building.stories)  # Print how many floors the building has.
-    print("Date Constructed:", building.date_constructed)  # Print when it was built.
-    print()
+    building.purchase(agent)
+    building.construct()
+
+for building in buildings:
+    print(f"{building.address} was purchased by {building.owner} on {building.date_constructed.strftime('%m/%d/%Y')} and has {building.stories} stories.")
+
