@@ -22,14 +22,11 @@ buildings = [
     Building("500 Pizza Lane", 12)
 ]
 
-# Real estate magnate
-magnate = "Hollywood"
+agent = "Hollywood"
 
-# Purchase and construct each building
 for building in buildings:
-    building.purchase(magnate)
+    building.purchase(agent)
     building.construct()
 
-# Print details of each building
 for building in buildings:
     print(f"{building.address} was purchased by {building.owner} on {building.date_constructed.strftime('%m/%d/%Y')} and has {building.stories} stories.")
